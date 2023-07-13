@@ -1,6 +1,10 @@
 // This program generates a 10x10 array of '.' chars and then runs a randomly generated
 // path over them starting with 'A' and going through to 'B'.
 
+// TODO:
+//	- Remove redundant if - break at start of path building loop
+//	- Add logic to cause ifinite loop
+
 #include <stdio.h>
 #include <stdio.h>
 #include <stdbool.h>
