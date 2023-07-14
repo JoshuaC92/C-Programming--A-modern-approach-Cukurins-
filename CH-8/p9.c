@@ -1,11 +1,6 @@
 // This program generates a 10x10 array of '.' chars and then runs a randomly generated
 // path over them starting with 'A' and going through to 'B'.
 
-// TODO:
-//	- Remove redundant if - break at start of path building loop
-//	- Add logic to cause ifinite loop
-
-#include <stdio.h>
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
@@ -16,7 +11,7 @@ int main(void){
 	int direction;				// 0 - UP | 1 - RIGHT | 2 - DOWN | 3 - LEFT
 	int hLoc = 0;				// Horizontal location
 	int vLoc = 0;				// Vertical location
-
+	int terminate = 0;			// Early termination flag
 	srand((unsigned) time(NULL));		
 
 	// Initialize the board pre run:
@@ -27,8 +22,14 @@ int main(void){
 		};
 
 	for (char cnt = 'A'; cnt <= 'Z'; cnt++){
-		if (board[vLoc][hLoc] != '.'){
-			cnt--; break;
+		if (board[vLoc + 1][hLoc] != '.' &&
+		    board[vLoc - 1][hLoc] != '.' &&
+		    board[vLoc][hLoc + 1] != '.' &&
+		    board[vLoc][hLoc - 1] != '.'){
+				cnt = 'Z' + 1;
+				printf("\n EARLY TERMINATION \n");
+				terminate = 1;
+				break;
 			};
 		board[vLoc][hLoc] = cnt;
 		direction = rand() % 4;			// Generate the direction 
@@ -51,7 +52,7 @@ int main(void){
 			};
 		};								
 	
-	for (int v = 0; v < 10; v++){
+	for (int v = 0; v < 10 && terminate != 1; v++){
 		for (int h = 0; h < 10;	h++){
 			printf(" %c ", board[v][h]);
 			};
