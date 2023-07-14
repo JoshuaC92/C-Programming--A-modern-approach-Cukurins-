@@ -22,17 +22,20 @@ int main(void){
 		};
 
 	for (char cnt = 'A'; cnt <= 'Z'; cnt++){
+
 		if (board[vLoc + 1][hLoc] != '.' &&
-		    board[vLoc - 1][hLoc] != '.' &&
-		    board[vLoc][hLoc + 1] != '.' &&
-		    board[vLoc][hLoc - 1] != '.'){
-				cnt = 'Z' + 1;
-				printf("\n EARLY TERMINATION \n");
-				terminate = 1;
-				break;
+	       	    board[vLoc - 1][hLoc] != '.' &&
+	    	    board[vLoc][hLoc + 1] != '.' &&
+	    	    board[vLoc][hLoc - 1] != '.'){
+			cnt = 'Z' + 1;
+			printf("\n EARLY TERMINATION \n");
+			terminate = 1;
+			break;
 			};
+
 		board[vLoc][hLoc] = cnt;
 		direction = rand() % 4;			// Generate the direction 
+		int attempts = 0;
 
 		while (true) {
             		if ((direction == 0 && vLoc > 0 && board[vLoc - 1][hLoc] == '.') ||
@@ -41,6 +44,12 @@ int main(void){
                 	    (direction == 3 && hLoc > 0 && board[vLoc][hLoc - 1] == '.')) {
                 		break;
             			}
+			attempts++;
+			if (attempts > 100){
+				printf("\nNO VALID DIRECTIONS\n");
+				terminate = 1;
+				break;
+				};
             		direction = rand() % 4;
         		}
 
