@@ -42,9 +42,13 @@ int main(void){
         		} 	
 		else {
             		if (oldCol + 1 >= n){
-                		square[row = oldRow][col = 0] = count++;
+                		square[oldRow][0] = count++;
+				row = oldRow;	
+				col = 0;
 				}
-            		else square[row = oldRow][col = oldCol + 1] = count++;
+            		else square[oldRow][oldCol + 1] = count++;
+				row = oldRow;
+				col = oldCol + 1;
                         }
 		};
 
