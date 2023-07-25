@@ -6,7 +6,11 @@ int main(void){
 
 	printf("Enter a odd number between 1 and 99: ");
 	scanf("%d", &n);
-
+	
+	while (n % 2 == 0 | n > 99 | n < 1){
+		printf("Not an odd number, or outside range, try again: ");	
+		scanf("%d", &n);
+		};
 
 	int square[n][n];
 	int col = n / 2;
