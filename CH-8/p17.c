@@ -1,8 +1,8 @@
 #include <stdio.h>
 
 int main(void){
-	int n, count, oldRow, oldCol;
-	int row = 0;
+	int n, count, oldCol, oldRow;
+	int col = 0;
 
 	printf("Enter a odd number between 1 and 99: ");
 	scanf("%d", &n);
@@ -13,8 +13,8 @@ int main(void){
 		};
 
 	int square[n][n];
-	int col = n / 2;
-	square[row][col] = 1;
+	int row = n / 2;
+	square[col][row] = 1;
 	
 	for (int i = 0; i < n; i++) {
        		for (int i2 = 0; i2 < n; i2++) {
@@ -23,42 +23,43 @@ int main(void){
     		};
 
 
-	row = n / 2; 
-    	col = 0;
-    	square[row][col] = 1;
+	col = n / 2; 
+    	row = 0;
+    	square[col][row] = 1;
 
     	count = 2;
     	while (count <= n * n) {
-        	oldRow = row;
         	oldCol = col;
-        	if (oldRow + 1 >= n){
-            		row = 0;
+        	oldRow = row;
+        	if (oldCol + 1 >= n){
+            		col = 0;
 			}
-        	else row = oldRow + 1;
+        	else col = oldCol + 1;
         	
-		if (oldCol - 1 < 0){
-            		col = n - 1;
+		if (oldRow - 1 < 0){
+            		row = n - 1;
 			}
-        	else col = oldCol - 1;
+        	else row = oldRow - 1;
         
-		if (square[row][col] == 0) {
-            		square[row][col] = count++;
+		if (square[col][row] == 0) {
+            		square[col][row] = count;
         		} 	
 		else {
-            		if (oldCol + 1 >= n){
-                		square[oldRow][0] = count++;
-				row = oldRow;	
-				col = 0;
+            		if (oldRow + 1 >= n){
+                		square[oldCol][0] = count;
+				col = oldCol;	
+				row = 0;
 				}
-            		else square[oldRow][oldCol + 1] = count++;
-				row = oldRow;
-				col = oldCol + 1;
+            		else square[oldCol][oldRow + 1] = count;
+				col = oldCol;
+				row = oldRow + 1;
                         }
+			count++;
 		};
 
-    	for (col = 0; col < n; col++) {
-        	for (row = 0; row < n; row++) {
-            		printf("%4d", square[row][col]);
+    	for (row = 0; row < n; row++) {
+        	for (col = 0; col < n; col++) {
+            		printf("%4d", square[col][row]);
         		};
         	printf("\n");
     		}
