@@ -18,10 +18,10 @@ int main(void){
 
 	quicksort(a, 0, N - 1);
 
-	print("In sorted order: ");
+	printf("In sorted order: ");
 	
-	for(int i = 0l i < N; i++){
-		printfi("%d ", a[i]);
+	for(int i = 0; i < N; i++){
+		printf("%d ", a[i]);
 		};
 
 	printf("\n");
