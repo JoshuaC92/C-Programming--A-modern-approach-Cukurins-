@@ -1,4 +1,6 @@
 // Sort an array of N integers using the quicksort algorithm
+// This is a poor implementation of qucksort that is designed to 
+// be a demonstration of recursion. 
 
 #include <stdio.h>
 
@@ -46,12 +48,14 @@ int split(int a[], int low, int high){
 	for(;;){
 		while (low < high && part_element <= a[high])
 			high--;
+
 		if (low >= high) break;
 		a[low] = a[high];
 		low++;
 
 		while (low < high && a[low] <= part_element)
 			low++;
+
 		if (low >= high) break;
 		a[high] = a[low];
 		high--;
