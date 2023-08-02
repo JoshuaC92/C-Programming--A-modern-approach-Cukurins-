@@ -62,5 +62,6 @@ int split(int a[], int low, int high){
 	};
 
 	a[high] = part_element;
+
 	return high;
 }
