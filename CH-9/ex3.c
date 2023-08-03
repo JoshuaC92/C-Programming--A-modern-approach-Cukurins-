@@ -6,7 +6,23 @@
 int  gcd(int m, int n);
 
 int main(void){
+	int x, y;
+
+	printf("Enter two integers: ");
+	scanf("%d %d", &x, &y);
+
+	printf("GCD: %d\n", gcd(x, y));
 	return 0;
 }
 
-int  gcd(int m, int n);
+int  gcd(int m, int n){
+	int remainder;
+
+	while (m != 0){
+		remainder = n % m;
+		n = m;
+		m = remainder;
+	};
+
+	return n;
+}
