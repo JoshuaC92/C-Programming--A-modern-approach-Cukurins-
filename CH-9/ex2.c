@@ -10,4 +10,7 @@ int main(void){
 }
 
 int check(int x, int n, int y){
-	
+	if((x >= 0) && (y >= 0) && (x < n) && (y < n))
+		return 1;
+	else return 0;
+} 	
