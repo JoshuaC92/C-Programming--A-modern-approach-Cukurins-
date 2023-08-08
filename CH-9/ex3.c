@@ -1,5 +1,7 @@
-// Write a function, gcd(m, n) that calculates the greatest common divisor of the integers m and n.
-// (Programming program 2 in chapter 6 describes Euclids algorithm for computing the GCD.)
+// Write a function, gcd(m, n) that calculates the greatest common divisor of 
+// the integers m and n.
+// (Programming program 2 in chapter 6 describes Euclids algorithm for 
+// computing the GCD.)
 
 #include <stdio.h>
 
